@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+struct Person 
+{
+	std::string name;
+	Person* father;
+	Person* mother;
+};
+
+
+int main() 
+{
+
+	//Introduction data information
+	struct Person child;
+	std::out << "what is your name? " << ;
+	std::cin >> child.name; 
+	
+	//Creat the mother
+	struct Person mother;
+	std::cout << "what is your mother name? " << ;
+	std::cin >> mother.name;
+
+	//Creat the father
+	struct Person father;
+	std::cout << "What is your father name? " << ;
+	std::cin >> father.name;
+
+	//connect names and person
+	child.mother = &mother;
+	child.father = &father;
+
+
+	//Print family tree
+	std::cout << "Family tree." << endl;
+	std::cout << "Your name : " << child.name << std::ednl;
+	std::cout << "Mother name : " << mother.name << std::endl;
+	std::cout << "Father name : " << father.name << std::endl;
+
+
+	return EXIT_SUCCESS; 
+
+} 
+
+
+
+
