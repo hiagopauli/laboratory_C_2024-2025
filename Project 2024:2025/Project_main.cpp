@@ -49,8 +49,8 @@ class Library
 				std::move(name), 
 				std::move(author), 
 				std::move(year));
-			_book_by_name.emplace(book->name(), book);
-			_book_by_author.emplace(book->author(), book);
+			_books_by_name.emplace(book->name(), book);
+			_books_by_author.emplace(book->author(), book);
 		}
 	
 		//find and research by book name or author
@@ -60,23 +60,23 @@ class Library
 			auto range = _books_by_name.equal_range(name);
 			if (range.first == range.second)
 			{
-				std::cout<< "No found book with name: " << name << endl;
+				std::cout<< "No found book with name: " << name << std::endl;
 				return;
 			}
 
-			std::cout << "Found Book name: " << name << endl;
+			std::cout << "Found Book name: " << name << std::endl;
 			for (auto it = range.first;it != range.second; ++it)
 			{
 				it->second->display();
 			}
 		}
 
-		std::pair<BookMap::const_iterator, Bookmap::const_iterator>	findByName(const std::string& name) const
+		std::pair<Bookmap::const_iterator, Bookmap::const_iterator>	findByName(const std::string& name) const
 		{
 			return _books_by_name.equal_range(name);
 		}
 
-		std::pair<BookMap::const_iterator, BookMap::const_iterator> findByAuthor(const std::string& author) const
+		std::pair<Bookmap::const_iterator, Bookmap::const_iterator> findByAuthor(const std::string& author) const
 		{
 			return _books_by_author.equal_range(author);
 		}
@@ -85,8 +85,8 @@ class Library
 
 		// creat a map by name and author
 
-		BookMap _books_by_name;
-		BookMap _books_by_author;
+		Bookmap _books_by_name;
+		Bookmap _books_by_author;
 };
 	
 
