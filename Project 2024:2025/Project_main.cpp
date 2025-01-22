@@ -5,11 +5,12 @@
 #include <map>
 #include "book.h"
 
+
 void createUser(std::map<int, std::shared_ptr<Person>>& librarySystem)
 {
 	std::string name;
 	std::string surname;
-	int age;
+	unsigned int age;
 	
 	std::cout << "What is your name? "     << std::endl;
 	std::cin.ignore();
@@ -22,16 +23,13 @@ void createUser(std::map<int, std::shared_ptr<Person>>& librarySystem)
 	std::cout << "what is your age? "      << std::endl;
 	std::cin >> age;
 	
-	// generate id based on age and counter
-	int generatedId = age * 100;
- 
-	
-	//add the new user on the system
-	librarySystem[generatedId] = std::make_shared<Person>(name, surname, age, generatedId);
+	librarySystem[generateId] = std::make_shared<Person>(name, surname, age, generateId);
 	
 	std::cout << "User created with success." << std::endl;
 	std::cout << "User ID: " << generatedId   << std::endl;
 }
+
+
 
 void printAllUsers(const std::map<int, std::shared_ptr<Person>>& librarySystem)
 {
@@ -80,6 +78,7 @@ int main()
 			
 		else if (choice == 2)
 		{
+			//searchUber(librarySystem);
 		}
 
 		else if (choice == 3)
@@ -102,14 +101,29 @@ int main()
 		else if (choice == 0)
 		{
 			std::cout << "Exite with success." << std::endl;
-			return EXIT_SUCCESS;
 		}
 		else 
 		{
 			std::cout << "Erro. " << std::endl;
+			return EXIT_FAILURE;
 		}
 	
 	}
-	
-	return EXIT_SUCCESS;
+		return EXIT_SUCCESS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
