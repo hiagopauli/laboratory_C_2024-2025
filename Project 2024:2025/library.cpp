@@ -1,33 +1,35 @@
 #include "library.h"
+#include <iostream>
 
-Library::~library()
-	{}
-
-void Library::loadFromFile(const std::string& filename)
-{
-
-}
-
-void Library::loadsaveToFile(const std::string& filename)
-{
-
-}
 
 void Library::addBook(const Book& book)
 {
-	auto book = std::make_shared<Book>(book);
-	_books_by_name.emplace(book->name(),book);
-	_books_by_author.emplace(book->author(),book);
+	auto shared_book = std::make_shared<Book>(book);
+	_books_by_name.emplace(book.name(), shared_book);
+	_books_by_author.emplace(book.author().name(), shared_book);
 }
 
-Book& Library::findByAuthor(const std::person& author) const 
+const Book* Library::findByAuthor(const Person& author) const 
 {
-	auto result = _books_by_author.find(author);
-	if (result != _books_by_authoor.end())
+	auto result = _books_by_author.find(author.name());
+	if (result != _books_by_author.end())
 	{
-		return result->second;
+		return result->second.get();
 	}
 
 	return nullptr;
-};
+}
+
+const Book* Library::findByName(const std::string& name) const
+{
+	auto result = _books_by_name.find(name);
+	if (result != _books_by_name.end())
+	{
+		return result->second.get();
+	}
+	return nullptr;
+}
+
+
+
 

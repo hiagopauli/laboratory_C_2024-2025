@@ -6,11 +6,12 @@ class Book
 { 
 public: 
 	Book(const Person& author, const std::string& name, int year);
-		
+	
 	const Person& author() const;
 	const std::string& name() const;
-	const int year() const;
+	int year() const;
 
+	// friend function 
 	friend std::ostream& operator<<(std::ostream& os, const Book& book);
 
 private:
@@ -18,4 +19,5 @@ private:
 	std::string _name;
 	int _year;
 };
+
 

@@ -1,16 +1,24 @@
+#include <iostream>
 #include "person.h"
 
-Person::Person(const std::string& name, unsigned int age, int id) :
+
+Person::Person(const std::string& name, const std::string& surname, unsigned int age, unsigned int id) :
 	_name(name),
+	_surname(surname),
 	_age(age),
 	_id(id)
 {
-
 }
 
 const std::string& Person::name() const 
 {
-	return _name; }
+	return _name; 
+}
+
+const std::string& Person::surname() const
+{
+	return _surname;
+}
 		
 int Person::age() const 
 { 
@@ -24,8 +32,11 @@ int Person::id() const
 
 std::ostream& operator<<(std::ostream& os, const Person& person) 
 {
-    os << "Name: " << person._name << endl;
-       << "Age: " << person._age << endl;
-       << "ID: " << person._id;
-    return os;
+	os 	<< "Name: " << person._name << std::endl
+			<< "Surname: " << person._surname << std::endl
+			<< "Age: " << person._age << std::endl
+			<< "ID: " << person._id;
+  		return os;
 }
+
+

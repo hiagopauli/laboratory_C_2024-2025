@@ -1,3 +1,5 @@
+#include <iostream>
+#include <string>
 #include "book.h"
 
 Book::Book(const Person& author, const std::string& name, int year):
@@ -18,18 +20,20 @@ const std::string& Book::name() const
 	return _name; 
 }
 
-const int Book::year() const 
+int Book::year() const 
 { 
 	return _year; 
 }
 
-std::ostream& operator<<(std::ostream& os, const Book& book) 
+std::ostream& operator<<(std::ostream& os, const Book& book)
 {
-    os << "Name:   " << book._name << "\n"
-       << "Author: " << book._author.name() << "\n"
+
+    os << "Name:   " << book._name << std::endl
+       << "Author: " << book._author.name() << std::endl
        << "Year:   " << book._year;
 
     return os;
-}
+};
+
 
 
