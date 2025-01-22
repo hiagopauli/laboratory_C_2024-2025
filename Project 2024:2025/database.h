@@ -12,8 +12,8 @@ public:
 	DataBase();
 	~DataBase() = default;
 		
-	void addPerson(const std::string& name, const std::string& surename, unsigned int age);
-	std::vector<Person>& getAllPersons() const;
+	Person* addPerson(const std::string& name, const std::string& surename, unsigned int age);
+	std::vector<Person*> getAllPeople() const;
 	
 	Person* findPersonById(int id);
 

@@ -4,9 +4,9 @@
 #include <vector>
 #include <map>
 #include "book.h"
+#include "database.h"
 
-
-void createUser(std::map<int, std::shared_ptr<Person>>& librarySystem)
+void createUser(DataBase& database)
 {
 	std::string name;
 	std::string surname;
@@ -22,11 +22,11 @@ void createUser(std::map<int, std::shared_ptr<Person>>& librarySystem)
 	
 	std::cout << "what is your age? "      << std::endl;
 	std::cin >> age;
-	
-	librarySystem[generateId] = std::make_shared<Person>(name, surname, age, generateId);
+
+	Person* person = database.addPerson(name, surname, age);
 	
 	std::cout << "User created with success." << std::endl;
-	std::cout << "User ID: " << generatedId   << std::endl;
+	std::cout << "User ID: " << person->id()   << std::endl;
 }
 
 
@@ -49,10 +49,18 @@ void printAllUsers(const std::map<int, std::shared_ptr<Person>>& librarySystem)
 	}
 }
 
+void printAllUsers(const DataBase& database)
+{
+	std::vector<Person*> people = database.getAllPeople();
+
+	for (Person* person : people) {
+		std::cout << person->name() << " "  << person->surname() << " "  << person->id() << '\n';
+	}
+}
 
 int main()
 {
-	std::map<int, std::shared_ptr<Person>> librarySystem;
+	DataBase database;
 	int choice;
 	
 	//start a loop continuous
@@ -73,7 +81,7 @@ int main()
 		
 		if (choice == 1)
 		{
-			createUser(librarySystem);
+			createUser(database);
 		}
 			
 		else if (choice == 2)
@@ -87,7 +95,7 @@ int main()
 
 		else if (choice == 4)
 		{
-			printAllUsers(librarySystem);
+			printAllUsers(database);
 		}
 	
 		else if (choice == 5)
@@ -101,6 +109,7 @@ int main()
 		else if (choice == 0)
 		{
 			std::cout << "Exite with success." << std::endl;
+			break;
 		}
 		else 
 		{
