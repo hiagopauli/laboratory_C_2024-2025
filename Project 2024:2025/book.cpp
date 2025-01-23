@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iostream>
 #include "book.h"
 
 Book::Book(const Person& author, const std::string& name, int year):
@@ -34,6 +35,8 @@ std::ostream& operator<<(std::ostream& os, const Book& book)
 
     return os;
 };
+
+
 
 
 

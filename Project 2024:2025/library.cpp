@@ -2,12 +2,6 @@
 #include <iostream>
 
 
-void Library::addBook(const Book& book)
-{
-	auto shared_book = std::make_shared<Book>(book);
-	_books_by_name.emplace(book.name(), shared_book);
-	_books_by_author.emplace(book.author().name(), shared_book);
-}
 
 const Book* Library::findByAuthor(const Person& author) const 
 {

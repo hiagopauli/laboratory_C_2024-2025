@@ -14,9 +14,6 @@ class Library
 		Library() = default;
 		~Library() = default;
 	
-		//add book on library 
-		void addBook(const Book& book);	
-	
 		//find a book by author
 		const Book* findByAuthor(const Person& author) const;
 	

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <memory>
 #include <vector>
@@ -29,8 +30,6 @@ void createUser(DataBase& database)
 	std::cout << "User ID: " << person->id()   << std::endl;
 }
 
-
-
 void printAllUsers(const std::map<int, std::shared_ptr<Person>>& librarySystem)
 {
 	if (librarySystem.empty())
@@ -57,6 +56,7 @@ void printAllUsers(const DataBase& database)
 		std::cout << person->name() << " "  << person->surname() << " "  << person->id() << '\n';
 	}
 }
+
 
 int main()
 {
@@ -119,20 +119,4 @@ int main()
 	
 	}
 		return EXIT_SUCCESS;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

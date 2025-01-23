@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include "person.h"
+#include "book.h"
 
 class DataBase
 {
@@ -21,4 +22,10 @@ private:
 	unsigned int countPeople;
 	std::map<unsigned int, std::unique_ptr<Person>> peopleMap;
 };
+
+		
+std::vector<Book> loadBook();
+void displayBooks(const std::vector<Book>& books);
+	
+
 #endif
