@@ -5,11 +5,13 @@
 #include "person.h"
 #include "database.h"
 #include "library.h"
-
+#include "book.h"
 
 DataBase::DataBase()
 {
 	countPeople = 0;
+	initAuthors();
+	initBooks();
 }
 
 Person* DataBase::addPerson(const std::string& name, const std::string& surname, unsigned int age)
@@ -44,31 +46,43 @@ Person* DataBase::findPersonById(int id)
 
 }
 
-std::vector<Book> createBooks()
+void DataBase::initAuthors()
 {
-	std::vector<Book> books;
-	
-	books.push_back(Book(Person(Donald Knuth), "Art Of Computer Programming.", 1968));
+	authorsMap.emplace(1, std::make_unique<Person>("Donald", "Knuth", 87, 1));
+	authorsMap.emplace(2, std::make_unique<Person>("xxx", "xxx", 87, 1));
+	authorsMap.emplace(3, std::make_unique<Person>("yyy", "yyy", 87, 1));
+	authorsMap.emplace(4, std::make_unique<Person>("zzzz", "zzzz", 87, 1));
+}
+
+Person* DataBase::findAuthorById(int id)
+{
+	std::map<unsigned int, std::unique_ptr<Person>>::iterator it = authorsMap.find(id);
+	if (it != authorsMap.end()) {
+		return it->second.get();
+	}
+
+	return nullptr;
+
+}
+
+void DataBase::initBooks()
+{
+	Person* author1 = findAuthorById(1);
+	std::unique_ptr<Book> book1 = std::make_unique<Book>(
+		*author1, "Algorithms", 1987
+	);
+	booksMap.emplace(1, std::move(book1));
+}
+
+std::vector<Book*> DataBase::getAllBooks()
+{
+	std::vector<Book*> books;
+
+	for (std::map<unsigned int, std::unique_ptr<Book>>::iterator it = booksMap.begin(); it != booksMap.end(); ++it) {
+     books.push_back(it->second.get());
+	}
 
 	return books;
-
-
-
 }
-
-//display
-
-void displayBooks(const std::vector<Book>& books)
-{
-	for (const auto& book : books)
-	{
-		std::cout << "Book name: "		  << book.name()   << std::endl;
-		std::cout << "Book author: " 		<< book.author() << std::endl;
-		std::cout << "Year released: "  << book.year()   << std::endl;
-		std::cout << "---------------"                   << std::endl;
-	}
-}
-
-
 
 

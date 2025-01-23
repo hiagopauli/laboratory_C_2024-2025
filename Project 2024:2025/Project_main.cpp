@@ -6,6 +6,8 @@
 #include <map>
 #include "book.h"
 #include "database.h"
+#include "library.h"
+#include "person.h"
 
 void createUser(DataBase& database)
 {
@@ -57,6 +59,15 @@ void printAllUsers(const DataBase& database)
 	}
 }
 
+void displayBooks(DataBase& database)
+{
+	std::vector<Book*> books = database.getAllBooks();
+	for (Book* book: books) {
+		std::cout << "Book:   " << book->name() << std::endl 
+						  << "Author: " << book->author().name() << std::endl 
+							<< "Year:   " << book->year() << std::endl;
+	}
+}
 
 int main()
 {
@@ -86,11 +97,12 @@ int main()
 			
 		else if (choice == 2)
 		{
-			//searchUber(librarySystem);
 		}
+
 
 		else if (choice == 3)
 		{
+			displayBooks(database);
 		}
 
 		else if (choice == 4)
@@ -116,7 +128,9 @@ int main()
 			std::cout << "Erro. " << std::endl;
 			return EXIT_FAILURE;
 		}
-	
+		
+		std::cout << std::endl;
+
 	}
 		return EXIT_SUCCESS;
 }
