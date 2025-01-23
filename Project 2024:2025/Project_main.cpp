@@ -25,8 +25,8 @@ void createUser(DataBase& database)
 
 	Person* person = database.addPerson(name, surname, age);
 	
-	std::cout << "User created with success." << std::endl;
-	std::cout << "User ID: " << person->id()   << std::endl;
+	std::cout << "User created with success." 	<< std::endl;
+	std::cout << "User ID: " << person->id()    << std::endl;
 }
 
 
@@ -85,10 +85,8 @@ int main()
 		}
 			
 		else if (choice == 2)
-		{
-			//searchUber(librarySystem);
+		{	
 		}
-
 		else if (choice == 3)
 		{
 		}
@@ -117,22 +115,9 @@ int main()
 			return EXIT_FAILURE;
 		}
 	
-	}
+	
 		return EXIT_SUCCESS;
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+return EXIT_SUCCESS;
 }
