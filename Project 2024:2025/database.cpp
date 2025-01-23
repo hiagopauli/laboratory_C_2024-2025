@@ -48,7 +48,7 @@ std::vector<Book> createBooks()
 {
 	std::vector<Book> books;
 	
-	books.push_back(Book("Art Of Computer Programming.", "Donald Knuth.", 1968));
+	books.push_back(Book(Person(Donald Knuth), "Art Of Computer Programming.", 1968));
 
 	return books;
 
@@ -60,12 +60,12 @@ std::vector<Book> createBooks()
 
 void displayBooks(const std::vector<Book>& books)
 {
-	for (const audo& book : books)
+	for (const auto& book : books)
 	{
 		std::cout << "Book name: "		  << book.name()   << std::endl;
-		std::cout << "Book author: " 		<< book.author() << std::ednl;
+		std::cout << "Book author: " 		<< book.author() << std::endl;
 		std::cout << "Year released: "  << book.year()   << std::endl;
-		std::cout << "---------------"                   << std::ednl;
+		std::cout << "---------------"                   << std::endl;
 	}
 }
 
