@@ -1,29 +1,21 @@
 #include "library.h"
-#include <iostream>
 
-
-
-const Book* Library::findByAuthor(const Person& author) const 
+Library::Library(DataBase* database) : _database(database)
 {
-	auto result = _books_by_author.find(author.name());
-	if (result != _books_by_author.end())
-	{
-		return result->second.get();
-	}
 
-	return nullptr;
 }
 
-const Book* Library::findByName(const std::string& name) const
+bool Library::rent(unsigned int personId, unsigned int bookId)
 {
-	auto result = _books_by_name.find(name);
-	if (result != _books_by_name.end())
-	{
-		return result->second.get();
-	}
-	return nullptr;
+  if (!_database->findRentBook(bookId)) {
+    _database->addRent(personId, bookId);
+    return true;
+  }
+
+  return false;
 }
 
-
-
-
+void Library::returnBook(unsigned int bookId)
+{
+  _database->removeRent(bookId);
+}

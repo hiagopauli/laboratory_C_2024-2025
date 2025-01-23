@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <map>
+#include <vector>
 #include "person.h"
 #include "database.h"
 #include "library.h"
@@ -83,6 +84,40 @@ std::vector<Book*> DataBase::getAllBooks()
 	}
 
 	return books;
+}
+
+void DataBase::addRent(unsigned int personId, unsigned int bookId)
+{
+  std::pair<unsigned int, unsigned int> pair(personId, bookId);
+  rents.push_back(pair);
+}
+  
+bool DataBase::findRentBook(unsigned int bookId) const
+{
+  for (std::pair<unsigned int, unsigned int> pair : rents) {
+    if (pair.second == bookId) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+void DataBase::removeRent(unsigned int bookId)
+{
+  std::vector<std::pair<unsigned int, unsigned int>>::iterator it;
+  bool found = false;
+
+  for (it = rents.begin(); it != rents.end(); ++it) {
+    if (it->second == bookId) {
+      found = true;
+      break;
+    }
+  }
+
+  if (found) {
+    rents.erase(it);
+  }
 }
 
 

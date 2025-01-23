@@ -1,29 +1,24 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+#include <iostream>
 #include <string>
 #include <memory>
 #include <map>
 #include "book.h"
 #include "person.h"
-
+#include "database.h"
 
 class Library
 {
-	public:
-		Library() = default;
-		~Library() = default;
+public:
+  Library(DataBase* database);
+	~Library() = default;
 	
-		//find a book by author
-		const Book* findByAuthor(const Person& author) const;
-	
-		//find a book by tittle
-		const Book* findByName(const std::string& name) const;
-	
-	private:
-		std::map<std::string, std::shared_ptr<Book>> _books_by_name;
-		std::map<std::string, std::shared_ptr<Book>> _books_by_author;
+  bool rent(unsigned int personId, unsigned int bookId);
+  void returnBook(unsigned int bookId);
+private:
+  DataBase* _database;
 };
-
 
 #endif

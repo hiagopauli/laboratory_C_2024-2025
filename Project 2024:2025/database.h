@@ -17,6 +17,10 @@ public:
 	std::vector<Person*> getAllPeople() const;
 	std::vector<Book*> getAllBooks();	
 	Person* findPersonById(int id);
+  bool findRentBook(unsigned int bookId) const;
+  void addRent(unsigned int personId, unsigned int bookId);
+  void removeRent(unsigned int bookId);
+
 	
 private:
 	void initAuthors();
@@ -27,6 +31,7 @@ private:
 	std::map<unsigned int, std::unique_ptr<Person>> peopleMap;
   std::map<unsigned int, std::unique_ptr<Person>> authorsMap;
   std::map<unsigned int, std::unique_ptr<Book>> booksMap;
+  std::vector<std::pair<unsigned int, unsigned int>> rents;
 };
 
 #endif

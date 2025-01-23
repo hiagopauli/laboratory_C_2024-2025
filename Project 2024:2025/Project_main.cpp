@@ -69,9 +69,38 @@ void displayBooks(DataBase& database)
 	}
 }
 
+void rent(Library& library)
+{
+  unsigned int personId;
+  unsigned int bookId;
+
+  std::cout << "Your Id: ";
+  std::cin >> personId;
+
+  std::cout << "Book Id: ";
+  std::cin >> bookId;
+
+  if (library.rent(personId, bookId)) {
+    std::cout << "Book rented\n";
+  } else {
+    std::cout << "Book already rented\n";
+  }
+}
+
+void returnBook(Library& library)
+{
+  unsigned int bookId;
+
+  std::cout << "Book Id: ";
+  std::cin >> bookId;
+
+  library.returnBook(bookId);
+}
+
 int main()
 {
 	DataBase database;
+  Library library(&database);
 	int choice;
 	
 	//start a loop continuous
@@ -112,10 +141,12 @@ int main()
 	
 		else if (choice == 5)
 		{
+      rent(library);
 		}
 
 		else if (choice == 6)
 		{
+      returnBook(library);
 		}
 
 		else if (choice == 0)
