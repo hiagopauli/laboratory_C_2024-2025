@@ -60,6 +60,7 @@ void printAllUsers(const DataBase& database)
 	}
 }
 
+
 void displayBooks(DataBase& database)
 {
 	std::vector<Book*> books = database.getAllBooks();

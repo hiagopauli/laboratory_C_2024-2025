@@ -21,6 +21,8 @@ public:
   void addRent(unsigned int personId, unsigned int bookId);
   void removeRent(unsigned int bookId);
 
+	std::vector<Person*> findPersonByName(const std::string& name);
+	std::vector<Person*> findPersonBySurname(const std::string& surname);
 	
 private:
 	void initAuthors();

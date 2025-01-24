@@ -26,29 +26,5 @@ private:
 	std::vector<std::string> borrowed;
 };
 
-/*class Author
-{
-	public:
-		Author(const std::string& name, const std::string& surname, unsigned int age, unsigned int id, const std::vector<std::string>& books):
-			Author(name, surname, age, id),	_books(books)
-			{
-			}
-		
-		const std::vector<std::string>& books() const 
-		{
-			return _books;
-		}
-
-		void addBook(const std::string& book)
-		{
-			_books.push_back(book);
-		}
-
-
-	private:
-		std::vector<std::string> _books;
-
-};*/
-			
 
 #endif

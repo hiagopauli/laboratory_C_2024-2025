@@ -31,11 +31,11 @@ int Book::year() const
 std::ostream& operator<<(std::ostream& os, const Book& book)
 {
 
-    os << "Name:   " << book._name << std::endl
-       << "Author: " << book._author.name() << std::endl
-       << "Year:   " << book._year;
+    os 
+			<< "Name:   " << book._name						<< std::endl
+			<< "Author: " << book._author.name()	<< std::endl
+			<< "Year:   " << book._year;					
 	
     return os;
 };
-
 

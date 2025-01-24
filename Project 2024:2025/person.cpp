@@ -32,10 +32,11 @@ int Person::id() const
 
 std::ostream& operator<<(std::ostream& os, const Person& person) 
 {
-	os 	<< "Name: " << person._name << std::endl
-			<< "Surname: " << person._surname << std::endl
-			<< "Age: " << person._age << std::endl
-			<< "ID: " << person._id;
+	os 	
+			<< "Name: "		 << person._name 		 << std::endl
+			<< "Surname: " << person._surname  << std::endl
+			<< "Age: "		 << person._age			 << std::endl
+			<< "ID: " 		 << person._id			 << std::endl;
   		return os;
 }
 

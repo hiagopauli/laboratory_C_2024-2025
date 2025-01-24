@@ -39,13 +39,29 @@ std::vector<Person*> DataBase::getAllPeople() const
 Person* DataBase::findPersonById(int id)
 {
 	std::map<unsigned int, std::unique_ptr<Person>>::iterator it = peopleMap.find(id);
-	if (it != peopleMap.end()) {
+	if (it != peopleMap.end()) 
+	{
 		return it->second.get();
 	}
-
+	
+	
 	return nullptr;
-
+	
 }
+
+std::vector<Person*> DataBase::findPersonByName(const std::string& name)
+{
+	std::vector<Person*> result;
+	for (const auto& pair : peopleMap)
+	{
+		if (pair.second->name() == name)
+		{
+			result.push_back(pair.second.get());
+		}
+	}
+	return result;
+}
+
 
 void DataBase::initAuthors()
 {
