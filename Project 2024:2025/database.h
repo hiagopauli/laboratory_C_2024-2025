@@ -16,13 +16,13 @@ public:
 	Person* addPerson(const std::string& name, const std::string& surename, unsigned int age);
 	std::vector<Person*> getAllPeople() const;
 	std::vector<Book*> getAllBooks();	
-	Person* findPersonById(int id);
+	Person* findPersonById(int id) const;
   bool findRentBook(unsigned int bookId) const;
   void addRent(unsigned int personId, unsigned int bookId);
   void removeRent(unsigned int bookId);
 
-	std::vector<Person*> findPersonByName(const std::string& name);
-	std::vector<Person*> findPersonBySurname(const std::string& surname);
+	std::vector<Person*> findPersonByName(const std::string& name) const;
+	std::vector<Person*> findPersonBySurname(const std::string& surname) const;
 	
 private:
 	void initAuthors();

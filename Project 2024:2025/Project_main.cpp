@@ -60,6 +60,66 @@ void printAllUsers(const DataBase& database)
 	}
 }
 
+void findPeople(const DataBase& database)
+{
+	int searchChoice;
+	std::cout << "-------------------------------"	<< std::endl;
+	std::cout << "Press 1 for search by name.		 "	<< std::endl;
+	std::cout << "Press 2 for search by surname. "	<< std::endl;
+	std::cout << "Press 3 for want search by id. "	<< std::endl;
+	std::cin  >> searchChoice;
+
+	if (searchChoice == 1)
+	{
+		std::string name;
+		std::cout << "Write user name: " << std::endl;
+		std::cin  >> name;
+	
+		std::vector<Person*> result = database.findPersonByName(name);
+
+		for (Person* person : result)
+		{
+				std::cout << "Name: "      << person->name()     << std::endl
+									<< "Surname: "   << person->surname()  << std::endl
+									<< "Age: "       << person->age()      << std::endl
+									<< "Person Id: " << person->id()       << std::endl;
+		}
+	}	
+	else if (searchChoice == 2)
+	{
+		std::string surname;
+		std::cout << "White user surname: " << std::endl;
+		std::cin >> surname;
+		
+		std::vector<Person*> result = database.findPersonBySurname(surname);
+		
+		for (Person* person : result)
+		{
+			std::cout << "Name: " << person->name()  << std::endl
+								<< "Surname: " << person->surname() << std::endl
+								<< "Age: "  << person->age() << std::endl
+								<< "Person Id: " << person->id() << std::endl;	
+		}
+	}
+	else if (searchChoice == 3)
+	{
+		unsigned int id;
+		std::cout << "Write Id user: " << std::endl;
+		std::cin >> id;
+		
+		Person* person = database.findPersonById(id);
+		
+		if (person)
+		{
+			std::cout << "Name: " << person->name() << std::endl
+								<< "Surname: " << person->surname() << std::endl
+								<< "Age: " << person->age() << std::endl
+								<< "Person Id: " << person->id() << std::endl;
+		}
+	}
+}
+
+
 
 void displayBooks(DataBase& database)
 {
@@ -130,6 +190,7 @@ int main()
 			
 		else if (choice == 2)
 		{
+			findPeople(database);
 		}
 
 
