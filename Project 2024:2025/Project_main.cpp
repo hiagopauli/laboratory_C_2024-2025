@@ -28,7 +28,7 @@ void createUser(DataBase& database)
 
 	Person* person = database.addPerson(name, surname, age);
 	
-	std::cout << "User created with success." << std::endl;
+	std::cout << "User created with success."  << std::endl;
 	std::cout << "User ID: " << person->id()   << std::endl;
 }
 
@@ -54,18 +54,21 @@ void printAllUsers(const DataBase& database)
 {
 	std::vector<Person*> people = database.getAllPeople();
 
-	for (Person* person : people) {
-		std::cout << person->name() << " "  << person->surname() << " "  << person->id() << '\n';
+	for (Person* person : people)
+	{
+		std::cout << person->name() << " "  << person->surname() << " "  << person->id() << std::endl;
 	}
 }
 
 void displayBooks(DataBase& database)
 {
 	std::vector<Book*> books = database.getAllBooks();
-	for (Book* book: books) {
-		std::cout << "Book:   " << book->name() << std::endl 
-						  << "Author: " << book->author().name() << std::endl 
-							<< "Year:   " << book->year() << std::endl;
+	for (Book* book: books)
+	{
+		std::cout << "Book:    " << book->name() 	        << std::endl 
+						  << "Author:  " << book->author().name() << std::endl 
+							<< "Year:    " << book->year() 				  << std::endl
+							<< "---------"                          << std::endl;
 	}
 }
 
@@ -75,10 +78,10 @@ void rent(Library& library)
   unsigned int bookId;
 
   std::cout << "Your Id: ";
-  std::cin >> personId;
+  std::cin  >> personId;
 
   std::cout << "Book Id: ";
-  std::cin >> bookId;
+  std::cin  >> bookId;
 
   if (library.rent(personId, bookId)) {
     std::cout << "Book rented\n";

@@ -49,10 +49,10 @@ Person* DataBase::findPersonById(int id)
 
 void DataBase::initAuthors()
 {
-	authorsMap.emplace(1, std::make_unique<Person>("Donald", "Knuth", 87, 1));
-	authorsMap.emplace(2, std::make_unique<Person>("xxx", "xxx", 87, 1));
-	authorsMap.emplace(3, std::make_unique<Person>("yyy", "yyy", 87, 1));
-	authorsMap.emplace(4, std::make_unique<Person>("zzzz", "zzzz", 87, 1));
+	authorsMap.emplace(1, std::make_unique<Person>("Donald Knuth", "Knuth", 87, 1));
+	authorsMap.emplace(2, std::make_unique<Person>("Denis Ritchie", " Ritchie", 70, 2));
+	authorsMap.emplace(3, std::make_unique<Person>("James Gosling", " Gosling", 69, 3));
+	authorsMap.emplace(4, std::make_unique<Person>("Torvalds Linus", "Linus", 55, 4));
 }
 
 Person* DataBase::findAuthorById(int id)
@@ -69,11 +69,29 @@ Person* DataBase::findAuthorById(int id)
 void DataBase::initBooks()
 {
 	Person* author1 = findAuthorById(1);
-	std::unique_ptr<Book> book1 = std::make_unique<Book>(
-		*author1, "Algorithms", 1987
-	);
+	std::unique_ptr<Book> book1 = std::make_unique<Book>
+	(*author1, "The Art of Computer Programming.", 1968);
 	booksMap.emplace(1, std::move(book1));
+	
+
+	Person* author2 = findAuthorById(2);
+	std::unique_ptr<Book> book2 = std::make_unique<Book>
+	(*author2, "C Programming Language.", 1988);
+	booksMap.emplace(2, std::move(book2));
+
+	Person* author3 = findAuthorById(3);
+	std::unique_ptr<Book> book3 = std::make_unique<Book>
+	(*author3, "Java language specification.", 2013);
+	booksMap.emplace(3, std::move(book3));
+
+	Person* author4 = findAuthorById(4);
+	std::unique_ptr<Book> book4 = std::make_unique<Book>
+	(*author4, "Just for Fun.", 2011);
+	booksMap.emplace(4, std::move(book4));
+
 }
+
+
 
 std::vector<Book*> DataBase::getAllBooks()
 {

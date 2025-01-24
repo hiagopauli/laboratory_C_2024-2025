@@ -15,6 +15,7 @@ public:
 	const std::string& name() const;
 	int year() const;
 
+
  	// friend function 
 	friend std::ostream& operator<<(std::ostream& os, const Book& book);
 	
